@@ -11,7 +11,7 @@ public class Carniceria implements Runnable{
         try{
             semaforo.acquire();
             System.out.println("El cliente "+Thread.currentThread().getName()+" esta siendo atendido");
-            Thread.currentThread().wait(10000);
+            Thread.sleep(10000);
             System.out.println("El cliente "+Thread.currentThread().getName()+" ha sido atendido");
             semaforo.release();
         } catch (InterruptedException e) {
