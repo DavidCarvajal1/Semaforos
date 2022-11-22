@@ -7,6 +7,10 @@ public class Carniceria implements Runnable{
     public void run() {
         carniceria();
     }
+
+    /**
+     * Atendera a un cliente, ocupando el hueco al inicio y dejandolo libre al terminar
+     */
     private void carniceria(){
         try{
             semaforo.acquire();
@@ -20,9 +24,10 @@ public class Carniceria implements Runnable{
     }
 
     public static void main(String[] args) {
+        //Creamos un objeto de tipo carniceria
         Carniceria carniceria=new Carniceria();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {//Ejecutamos 10 hilos de carniceria dandole un nombre a cada uno
             Thread th=new Thread(carniceria);
             th.setName("Cliente "+(i+1));
             th.start();
